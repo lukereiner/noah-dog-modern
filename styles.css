@@ -1,0 +1,92 @@
+* {
+    background-color: white;
+    color: blue;
+    text-align: center;
+}
+
+.heading {
+    font-size: 16px;
+}
+
+.betting {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.winnings {
+    border: 2px solid black;
+    padding: 0px 10px;
+}
+
+.round-winnings {
+    border: 2px solid black;
+    padding: 0px 10px;
+}
+
+.wager {
+    border: 2px solid black;
+    padding: 0px 10px;
+}
+
+.wager-buttons {
+    margin-top: 20px;
+}
+
+.wager-buttons button {
+    margin: 0px 8px;
+    padding: 8px 16px;
+    font-size: 18px;
+}
+
+.win-loss {
+    border: 2px solid black;
+    padding: 0px 10px;
+}
+
+/* NOAH PHOTOS & DOWN */
+.machine {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    margin: 30px 0px;
+}
+
+.lever {
+    vertical-align: middle;
+}
+
+
+
+.answer-header {
+    font-size: 24px;
+}
+
+#output {
+    background-color: black;
+    border-radius: 12px;
+    color: white;
+    height: 40px;
+    width: 270px;
+    margin: 0 auto;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#result img {
+    object-fit: cover;
+    width: 150px;
+    max-height: 250px;
+}
+
+.my-chart {
+    margin-top: 20px;
+}

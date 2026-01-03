@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Noah Dog</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/x-icon" href="noah-dog-media\favicon.png">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+
+    <body>
+
+        <header></header>
+
+        <main>
+            <section>
+                <div class="heading">
+                    <h1>Does Noah got that DOG in 'em?</h1>
+                </div>
+            </section>
+
+            <section class="answer-output">
+                <div class="answer">
+                    <!---<h3 class="answer-header">Result:</h3> -->
+                    <p id="output"></p>
+                </div>
+            </section>
+
+            <section class="machine">
+                <div class="photos">
+                    <span id="result"></span>
+                </div>
+                <div class="play">
+                    <h3>Pull the lever!</h3>
+                    <div class="lever">
+                        <img id="lever-up" src="noah-dog-media/lever/lever-up.png" alt="" height="200">
+                        <img id="lever-down" src="noah-dog-media/lever/lever-down.png" alt="" height="200">
+                    </div>
+                </div>
+            </section>
+
+            <section class="betting">
+                <div class="wager">
+                    <h3>Wallet: $<span id="wallet-amount">0</span></h3>
+                </div>
+                <div class="wager">
+                    <h3>Wager: $<span id="wager-number">0</span></h3>
+
+                </div>
+                <div class="win-loss">
+                    <h3>W/L: <span id="dog-win"></span> - <span id="dog-loss"></span> (<span id="dog-percent"></span>%)</h3>
+                </div>
+            </section>
+
+            <div class="wager-buttons">
+                <button id="minus1k">-1k</button>
+                <button id="minus">-100</button>
+                <button id="plus">+100</button>
+                <button id="plus1k">+1k</button>
+            </div>
+
+            <div class="my-chart">
+                <canvas id="myChart" width="250" height="250"></canvas>
+            </div>
+
+
+
+        </main>
+
+        <script src="main.js"></script>
+
+    </body>
+
+</html>
