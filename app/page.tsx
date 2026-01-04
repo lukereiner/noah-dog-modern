@@ -21,6 +21,7 @@ export default function GamePage() {
       <div className="max-w-4xl mx-auto">
         {/* TODO: Add game title */}
         <h1 className="text-4xl font-bold text-center mb-8">Does Noah got that DOG in 'em?</h1>
+        <div className="text-2xl font-bold text-center mb-4">We shall see!</div>
 
         {/* TODO: Task 2.4 - Add WalletDisplay component here */}
         <div className="mb-8">

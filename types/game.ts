@@ -1,9 +1,19 @@
-export type GameState = {}
+export interface GameState {
+    wallet: number;
+    wager: number;
+    wins: number;
+    losses: number;
+}
 
 // TODO: Define what a slot result looks like
-export type SlotResult = {}
+export interface SlotResult {
+    type: 'noah' | 'dog';
+    image: string;
+}
 
 // TODO: Define what happens after a spin
-export type SpinResult = {}
+export interface SpinResult {
+    
+}
 
 // TODO: Add more types as needed
