@@ -8,12 +8,16 @@ export interface GameState {
 // TODO: Define what a slot result looks like
 export interface SlotResult {
     type: 'noah' | 'dog';
+    randomNumber: number;
     image: string;
 }
 
 // TODO: Define what happens after a spin
 export interface SpinResult {
-    
+    outcome: 'win' | 'loss';
+    slot: SlotResult[];
 }
 
-// TODO: Add more types as needed
+export interface GameState{};
+export interface SlotResult{};
+export interface SpinResult{};
