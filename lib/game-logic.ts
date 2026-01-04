@@ -5,7 +5,6 @@ import type { SpinResult } from "@/types/game"
  *
  * This should generate a random spin result
  * Hint: Look at your old main.js randomizeOutcome() function
- *
  * Steps:
  * 1. Generate 3 random slots (each can be 'noah' or 'dog')
  * 2. Pick random images for each slot
@@ -16,6 +15,8 @@ export function generateSpinResult(): SpinResult {
   // TODO: Implement random logic here
   throw new Error("Not implemented yet - Task 2.2")
 }
+
+// my comment
 
 /**
  * TODO: Implement this function
