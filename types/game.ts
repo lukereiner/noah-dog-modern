@@ -8,7 +8,7 @@ export interface GameState {
 // TODO: Define what a slot result looks like
 export interface SlotResult {
     type: 'noah' | 'dog';
-    randomNumber: number;
+    imageIndex: number;
     image: string;
 }
 

@@ -1,4 +1,4 @@
-import type { SpinResult } from "@/types/game"
+import type { SpinResult, SlotResult } from "@/types/game"
 
 /**
  * TODO: Implement this function
@@ -12,11 +12,13 @@ import type { SpinResult } from "@/types/game"
  * 4. Return a SpinResult object
  */
 export function generateSpinResult(): SpinResult {
-  // TODO: Implement random logic here
-  throw new Error("Not implemented yet - Task 2.2")
-}
+  const slot: SlotResult[] = [];
 
-// my comment
+  const imageIndex = Math.random();
+
+  const type: 'noah' | 'dog' = Math.random() < 0.5 ? 'noah' : 'dog';
+
+}
 
 /**
  * TODO: Implement this function
