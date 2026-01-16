@@ -1,5 +1,7 @@
 "use client"
 
+import GenerateSpinResult from "./components/GenerateSpinResult"
+
 // TODO: Import your components here as you build them
 // import { WalletDisplay } from '@/components/wallet-display'
 // import { SlotDisplay } from '@/components/slot-display'
@@ -22,6 +24,8 @@ export default function GamePage() {
         {/* TODO: Add game title */}
         <h1 className="text-4xl font-bold text-center mb-8">Does Noah got that DOG in 'em?</h1>
         <div className="text-2xl font-bold text-center mb-4">We shall see!</div>
+
+        <GenerateSpinResult />
 
         {/* TODO: Task 2.4 - Add WalletDisplay component here */}
         <div className="mb-8">

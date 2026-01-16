@@ -1,4 +1,4 @@
-import type { SpinResult, SlotResult } from "@/types/game"
+import type { SpinResult } from "@/types/game"
 
 /**
  * TODO: Implement this function
@@ -12,12 +12,18 @@ import type { SpinResult, SlotResult } from "@/types/game"
  * 4. Return a SpinResult object
  */
 export function generateSpinResult(): SpinResult {
-  const slot: SlotResult[] = [];
-
-  const imageIndex = Math.random();
 
   const type: 'noah' | 'dog' = Math.random() < 0.5 ? 'noah' : 'dog';
 
+  const outcome: 'win' | 'loss' =  type === 'noah' ? 'win' : 'loss';
+
+ const imageIndex = Math.floor(Math.random() * 12) + 1;
+
+  const image = type === 'noah'
+    ? `/public/noah/noah-${imageIndex}.jpg`
+    : `/public/dogs/dog-${imageIndex}.jpg`
+
+  return { outcome, type, image };
 }
 
 /**
