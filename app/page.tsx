@@ -1,7 +1,5 @@
 "use client"
 
-import { useGameState } from "@/hooks/use-game-state"
-
 // TODO: Import your components here as you build them
 // import { WalletDisplay } from '@/components/wallet-display'
 // import { SlotDisplay } from '@/components/slot-display'
@@ -9,12 +7,6 @@ import { useGameState } from "@/hooks/use-game-state"
 // import { StatsDisplay } from '@/components/stats-display'
 
 export default function GamePage() {
-  const { gameState, placeBet, processSpin, updateWager, resetGame } = useGameState();
-
-  const handleLeverPull = () => {
-    placeBet({ wager: gameState.wager });
-  }
-
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
       {/* TODO: Create a centered container */}
