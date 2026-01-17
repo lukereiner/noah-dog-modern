@@ -1,16 +1,5 @@
 import type { SpinResult } from "@/types/game"
 
-/**
- * TODO: Implement this function
- *
- * This should generate a random spin result
- * Hint: Look at your old main.js randomizeOutcome() function
- * Steps:
- * 1. Generate 3 random slots (each can be 'noah' or 'dog')
- * 2. Pick random images for each slot
- * 3. Determine if it's a win (all same), loss (all different), or tie
- * 4. Return a SpinResult object
- */
 export function generateSpinResult(): SpinResult {
 
   const type: 'noah' | 'dog' = Math.random() < 0.5 ? 'noah' : 'dog';
@@ -27,9 +16,6 @@ export function generateSpinResult(): SpinResult {
 }
 
 /**
- * TODO: Implement this function
- *
- * Calculate how much money the player wins or loses
  *
  * @param wager - The amount bet
  * @param outcome - 'win', 'loss', or 'tie'
