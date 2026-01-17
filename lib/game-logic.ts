@@ -35,10 +35,12 @@ export function generateSpinResult(): SpinResult {
  * @param outcome - 'win', 'loss', or 'tie'
  * @returns The amount to add/subtract from wallet (negative for loss)
  */
-export function calculatePayout(wager: number, outcome: "win" | "loss" | "tie"): number {
-  // TODO: Implement payout logic
-  // Hint: Win = +wager, Loss = -wager, Tie = 0?
-  throw new Error("Not implemented yet - Task 2.2")
+export function calculatePayout(wager: number, outcome: "win" | "loss" ): number {
+  if (outcome = 'win') {
+    return wager;
+  } else {
+    return -wager;
+  }
 }
 
 /**
@@ -51,9 +53,7 @@ export function calculatePayout(wager: number, outcome: "win" | "loss" | "tie"):
  * @returns true if bet is valid, false otherwise
  */
 export function canPlaceBet(wallet: number, wager: number): boolean {
-  // TODO: Implement validation
-  // Check: wager > 0, wager <= wallet, etc.
-  throw new Error("Not implemented yet - Task 2.2")
+  return wager > 0 && wager <= wallet;
 }
 
 /**
@@ -66,9 +66,8 @@ export function canPlaceBet(wallet: number, wager: number): boolean {
  * @returns New wallet amount
  */
 export function updateWallet(current: number, change: number): number {
-  // TODO: Implement wallet update
-  // Make sure wallet never goes negative!
-  throw new Error("Not implemented yet - Task 2.2")
+  const newBalance = current + change;
+
+  return Math.max(0, newBalance);
 }
 
-// TODO: Add more helper functions as needed
