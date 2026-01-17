@@ -4,13 +4,13 @@ export function generateSpinResult(): SpinResult {
 
   const type: 'noah' | 'dog' = Math.random() < 0.5 ? 'noah' : 'dog';
 
-  const outcome: 'win' | 'loss' =  type === 'noah' ? 'win' : 'loss';
+  const outcome: 'win' | 'loss' =  type === 'dog' ? 'win' : 'loss';
 
  const imageIndex = Math.floor(Math.random() * 12) + 1;
 
   const image = type === 'noah'
-    ? `/public/noah/noah-${imageIndex}.jpg`
-    : `/public/dogs/dog-${imageIndex}.jpg`
+    ? `/noah/noah-${imageIndex}.jpg`
+    : `/dogs/dog-${imageIndex}.jpg`
 
   return { outcome, type, image };
 }
