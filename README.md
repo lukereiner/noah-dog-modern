@@ -76,39 +76,6 @@ npm run storybook    # Start Storybook (after you set it up)
 4. **Experiment** - Try things and learn from mistakes
 5. **Ask for hints** - If stuck, ask for guidance (not complete answers)
 
-## 📝 Task Progress
-
-Track your progress through the guide:
-
-### Phase 2: Core Components
-- [ &#x2714; ] Task 2.1: Create Type Definitions
-- [ &#x2714; ] Task 2.2: Build Game Logic
-- [ ] Task 2.3: Style Main Layout
-- [ ] Task 2.4: Create Wallet Component
-- [ ] Task 2.5: Create Slot Display Component
-- [ ] Task 2.6: Create Lever Component
-- [ ] Task 2.7: Create Stats Display Component
-
-### Phase 3: State Management
-- [ ] Task 3.1: Set Up React Query
-- [ ] Task 3.2: Create Game State Hook
-- [ ] Task 3.3: Connect Components to State
-
-### Phase 4: Testing
-- [ ] Task 4.1: Set Up Jest
-- [ ] Task 4.2: Write Logic Tests
-- [ ] Task 4.3: Write Component Tests
-- [ ] Task 4.4: Add Accessibility Tests
-
-### Phase 5: Storybook
-- [ ] Task 5.1: Set Up Storybook
-- [ ] Task 5.2: Create Component Stories
-
-### Phase 6: Polish
-- [ ] Task 6.1: Add Chart (Optional)
-- [ ] Task 6.2: Responsive Design
-- [ ] Task 6.3: Deploy to Vercel
-
 ## 🚀 Next Steps
 
 1. Open `LEARNING_GUIDE.md`
