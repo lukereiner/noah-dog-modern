@@ -4,9 +4,9 @@
 import { useState } from 'react'
 // import { WalletDisplay } from '@/components/wallet-display'
 import { ResultDisplay } from '@/components/ResultDisplay'
-import { generateSpinResult } from '@/lib/game-logic'
+import { canPlaceBet, generateSpinResult } from '@/lib/game-logic'
 import type { SpinResult } from '@/types/game'
-// import { Lever } from '@/components/lever'
+import { Lever } from '@/components/Lever'
 // import { StatsDisplay } from '@/components/stats-display'
 
 export default function GamePage() {
@@ -29,7 +29,7 @@ export default function GamePage() {
       {/* TODO: Create a centered container */}
       <div className="max-w-4xl mx-auto">
         {/* TODO: Add game title */}
-        <h1 className="text-4xl font-bold text-center mb-8">Does Noah got that DOG in 'em?</h1>
+        <h1 className="text-4xl font-bold text-center mb-8">Does Noah got that DOG in 'em? 🦴</h1>
 
         {/* TODO: Task 3.1 - Add WalletDisplay component here */}
         <div className="mb-8">
@@ -53,13 +53,11 @@ export default function GamePage() {
             disabled={false}
             isSpinning={false}
           /> */}
-      <button
+      <Lever
         onClick={handleSpin}
         disabled={isSpinning}
-        className="px-6 py-3 bg-blue-600 text-white rounded-lg disabled:opacity-50"
-      >
-        {isSpinning ? 'Spinning...' : 'Pull Lever'}
-      </button>
+        isSpinning={isSpinning}
+      />
         </div>
 
         {/* TODO: Task 3.3 - Add StatsDisplay component here (only wins and losses, NO ties) */}

@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Noah Dog Modern",
   description: "Recreate Noah Dog with a modern web stack",
+  icons: {
+    icon: '/favicon.png'
+  }
 };
 
 export default function RootLayout({
