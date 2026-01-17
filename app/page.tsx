@@ -1,6 +1,6 @@
 "use client"
 
-import GenerateSpinResult from "./components/GenerateSpinResult"
+import { useGameState } from "@/hooks/use-game-state"
 
 // TODO: Import your components here as you build them
 // import { WalletDisplay } from '@/components/wallet-display'
@@ -9,13 +9,11 @@ import GenerateSpinResult from "./components/GenerateSpinResult"
 // import { StatsDisplay } from '@/components/stats-display'
 
 export default function GamePage() {
-  // TODO: Task 3.3 - Import and use your game state hook here
-  // const { gameState, placeBet, pullLever, resetGame } = useGameState()
+  const { gameState, placeBet, processSpin, updateWager, resetGame } = useGameState();
 
-  // TODO: Task 2.3 - Style this layout with Tailwind CSS
-  // Hint: Use flexbox to center everything
-  // Hint: Use a dark background like your original (bg-gray-900)
-  // Hint: Make it responsive with min-h-screen
+  const handleLeverPull = () => {
+    placeBet({ wager: gameState.wager });
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
@@ -24,8 +22,6 @@ export default function GamePage() {
         {/* TODO: Add game title */}
         <h1 className="text-4xl font-bold text-center mb-8">Does Noah got that DOG in 'em?</h1>
         <div className="text-2xl font-bold text-center mb-4">We shall see!</div>
-
-        <GenerateSpinResult />
 
         {/* TODO: Task 2.4 - Add WalletDisplay component here */}
         <div className="mb-8">
