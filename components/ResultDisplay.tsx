@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import type { SpinResult } from "@/types/game";
 import styles from './ResultDisplay.module.css';
+import { useEffect } from 'react';
 
 interface ResultDisplayProps {
     result: SpinResult | null;
@@ -12,6 +13,13 @@ interface ResultDisplayProps {
 export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
     const displayImage = result?.image || '/noah/noah-1.jpg';
     const displayOutcome = result?.outcome;
+
+    useEffect(() => {
+        if (result?.outcome === 'win') {
+            const dogAudio = new Audio('/got-that-dog-audio.wav');
+            dogAudio.play();
+        }
+    }, [result])
 
     return (
         <div className='flex flex-col items-center gap-4'>
@@ -40,7 +48,7 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
                 `text-3xl font-bold
                 ${result?.outcome === 'win' ? 'text-green-500' : 'text-red-500'}`
             }>
-            {result?.outcome === 'win' ? '🐕‍🦺 GOT THAT DOG! 🦴' : '🧸 Just Noah... 🎀'}
+            {result?.outcome === 'win' ? '🐕‍🦺 GOT THAT DOG! 🦴': '🧸 Just Noah... 🎀'}
             </div>
         )}
         </div>
