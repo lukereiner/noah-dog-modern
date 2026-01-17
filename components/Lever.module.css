@@ -1,0 +1,95 @@
+/* Complete redesign to create a realistic slot machine lever */
+
+.leverContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  /* Removed active transform - only ball moves now */
+}
+
+.leverContainer:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Made ball smaller - 50px instead of 80px */
+.leverBall {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle at 30% 30%, oklch(0.769 0.188 70.08), oklch(0.646 0.222 41.116));
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(0, 0, 0, 0.2), inset 4px 4px 8px
+    rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+/* Inner highlight on ball for depth */
+.leverBall::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 15px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  filter: blur(6px);
+}
+
+/* Made shaft smaller and fixed - 40px width, 150px height */
+.leverShaft {
+  width: 40px;
+  height: 150px;
+  background: linear-gradient(to right, oklch(0.269 0 0), oklch(0.439 0 0), oklch(0.269 0 0));
+  border-radius: 20px;
+  position: relative;
+  margin-top: -8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), inset -3px 0 6px rgba(0, 0, 0, 0.3), inset 3px 0 6px
+    rgba(255, 255, 255, 0.1);
+}
+
+/* Track/slot in the middle of the shaft */
+.leverTrack {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 120px;
+  background: linear-gradient(to right, oklch(0.708 0 0), oklch(0.556 0 0), oklch(0.708 0 0));
+  border-radius: 13px;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 -4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Only ball animates - fluid down and back up motion */
+.pulling .leverBall {
+  animation: pullDown 0.8s ease-in-out;
+}
+
+@keyframes pullDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(80px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Removed shaft animation - shaft stays fixed */
+
+/* Hover effect for non-disabled state */
+.leverContainer:not(:disabled):hover .leverBall {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(0, 0, 0, 0.2), inset 4px 4px 8px
+    rgba(255, 255, 255, 0.3);
+}

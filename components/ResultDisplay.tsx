@@ -10,6 +10,20 @@ interface ResultDisplayProps {
     isSpinning: boolean;
 };
 
+const randomWordList = [
+    `LOL I don't think so...`,
+    `I got money he doesn't 😄`,
+    `He's all talk...`,
+    `Does he really tho?`,
+    `Doubt he's even about it`,
+    `He barks like a poodle 🐩`,
+    `His knee wasn't even injured 🏀`,
+    `Only did 1 week of Titus 10`,
+    `Lives by the Irish goodbye...`,
+    `Drives under 200 yards 🏌🏻`,
+    `Dude, he 3 putts ⛳`,
+]
+
 export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
     const displayImage = result?.image || '/noah/noah-1.jpg';
     const displayOutcome = result?.outcome;
@@ -20,6 +34,8 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
             dogAudio.play();
         }
     }, [result])
+
+    const randomWordIndex = Math.floor(Math.random() * randomWordList.length)
 
     return (
         <div className='flex flex-col items-center gap-4'>
@@ -35,9 +51,9 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
                 className='object-fill'/>
             </div>
             {isSpinning && (
-                <div className='absolute inset-0 bg-black/50 flex items-cetner jsutify-center'>
+                <div className='flex items-cetner jsutify-center'>
                     <p className='text-white text-2xl font-bold animate-pule'>
-                        
+                        {randomWordList[randomWordIndex]}
                     </p>
                 </div>
             )}
@@ -45,7 +61,7 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
 
         {!isSpinning && result && (
             <div className={
-                `text-3xl font-bold
+                `text-2xl font-bold
                 ${result?.outcome === 'win' ? 'text-green-500' : 'text-red-500'}`
             }>
             {result?.outcome === 'win' ? '🐕‍🦺 GOT THAT DOG! 🦴': '🧸 Just Noah... 🎀'}
