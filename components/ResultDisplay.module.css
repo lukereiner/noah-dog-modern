@@ -1,0 +1,50 @@
+/* TODO: Add spinning animation */
+.spinning {
+  animation: spin 0.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg);
+    filter: blur(4px);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+/* TODO: Add win animation */
+.win {
+  animation: winPulse 0.6s ease-in-out;
+}
+
+@keyframes winPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* TODO: Add loss animation */
+.loss {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
