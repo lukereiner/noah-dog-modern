@@ -82,7 +82,7 @@ Track your progress through the guide:
 
 ### Phase 2: Core Components
 - [ &#x2714; ] Task 2.1: Create Type Definitions
-- [ ] Task 2.2: Build Game Logic
+- [ &#x2714; ] Task 2.2: Build Game Logic
 - [ ] Task 2.3: Style Main Layout
 - [ ] Task 2.4: Create Wallet Component
 - [ ] Task 2.5: Create Slot Display Component
