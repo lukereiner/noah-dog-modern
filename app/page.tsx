@@ -8,6 +8,7 @@ import { canPlaceBet, generateSpinResult } from '@/lib/game-logic'
 import type { SpinResult } from '@/types/game'
 import { Lever } from '@/components/Lever'
 // import { StatsDisplay } from '@/components/StatsDisplay'
+// import { WalletDisplay } from '@/components/WalletDisplay'
 
 export default function GamePage() {
   const [result, setResult] = useState<SpinResult | null>(null);
