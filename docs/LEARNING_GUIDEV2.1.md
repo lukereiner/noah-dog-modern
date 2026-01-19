@@ -2139,7 +2139,7 @@ After completing this task:
 
 **Learning Goal:** Integrate third-party libraries with TypeScript
 
-**🎯 Breaking Down Task 3.4**
+**🎯 Breaking Down Task 3.3**
 
 ---
 
@@ -2540,8 +2540,416 @@ export default function Home() {
 **Next Steps:**
 
 After completing this task:
+1. Move on to Task 3.4 (Wallet & Bet Controls Component)
+2. Then Phase 4 (Integration & Polish)
+
+---
+
+#### Task 3.4: Create Wallet & Bet Controls Component
+
+**What to do:**
+1. Create `components/wallet-display.tsx`
+2. Display current wallet balance
+3. Show current wager amount
+4. Add controls to adjust wager (+ and - buttons)
+5. Disable controls when spinning
+
+**Learning Goal:** Build interactive form controls with state management
+
+**🎯 Breaking Down Task 3.4**
+
+---
+
+**Step 1: Understand Component Requirements**
+
+The wallet component needs to:
+- Display the current wallet balance (formatted as currency)
+- Show the current wager amount
+- Allow users to increase wager
+- Allow users to decrease wager
+- Prevent wagers higher than wallet balance
+- Disable controls when game is spinning
+
+---
+
+**Step 2: Create the Props Interface**
+
+**Think about:**
+- What data does this component need from parent?
+- What actions can users take?
+- When should controls be disabled?
+
+**Your task:**
+
+```typescript
+// components/wallet-display.tsx
+'use client';
+
+interface WalletDisplayProps {
+  wallet: number;           // Current wallet balance
+  wager: number;            // Current wager amount
+  onWagerChange: (newWager: number) => void;  // Callback to update wager
+  disabled?: boolean;       // Disable controls when spinning
+  minWager?: number;        // Minimum bet (default: 10)
+  maxWager?: number;        // Maximum bet (default: 100)
+}
+```
+
+**Questions to think about:**
+- Should minWager and maxWager be props or constants?
+- How do you format currency (e.g., $1,000.00)?
+- What happens if wager exceeds wallet balance?
+
+---
+
+**Step 3: Build the Component Structure**
+
+```typescript
+import { useState } from 'react';
+
+export function WalletDisplay({ 
+  wallet, 
+  wager, 
+  onWagerChange, 
+  disabled = false,
+  minWager = 10,
+  maxWager = 100 
+}: WalletDisplayProps) {
+  
+  // TODO: Format currency helper
+  const formatCurrency = (amount: number): string => {
+    // Convert number to currency string: 1000 -> "$1,000.00"
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(amount);
+  };
+
+  // TODO: Handle wager increase
+  const increaseWager = () => {
+    // What's the maximum you can bet?
+    // Can't bet more than wallet balance
+    // Can't exceed maxWager
+    const newWager = Math.min(wager + 10, maxWager, wallet);
+    onWagerChange(newWager);
+  };
+
+  // TODO: Handle wager decrease
+  const decreaseWager = () => {
+    // What's the minimum you can bet?
+    const newWager = Math.max(wager - 10, minWager);
+    onWagerChange(newWager);
+  };
+
+  return (
+    <div className="bg-card rounded-lg border-2 border-border p-6 space-y-4">
+      {/* TODO: Display wallet balance */}
+      
+      {/* TODO: Display current wager with controls */}
+      
+      {/* TODO: Show visual warning if wallet is low */}
+    </div>
+  );
+}
+```
+
+---
+
+**Step 4: Implement Wallet Balance Display**
+
+```typescript
+return (
+  <div className="bg-card rounded-lg border-2 border-border p-6 space-y-4">
+    {/* Wallet Balance Section */}
+    <div className="text-center">
+      <div className="text-sm text-muted-foreground uppercase mb-2">
+        Wallet Balance
+      </div>
+      <div className={`text-3xl font-bold ${
+        wallet < 50 ? 'text-red-500' : 'text-foreground'
+      }`}>
+        {formatCurrency(wallet)}
+      </div>
+      {wallet < 50 && (
+        <div className="text-xs text-red-500 mt-1">
+          ⚠️ Low balance!
+        </div>
+      )}
+    </div>
+
+    {/* Divider */}
+    <div className="border-t border-border" />
+
+    {/* TODO: Wager controls go here */}
+  </div>
+);
+```
+
+**Key concepts:**
+- Conditional styling: `wallet < 50 ? 'text-red-500' : 'text-foreground'`
+- Warning message only shows when balance is low
+- `formatCurrency` makes numbers look like money
+
+---
+
+**Step 5: Implement Wager Controls**
+
+```typescript
+return (
+  <div className="bg-card rounded-lg border-2 border-border p-6 space-y-4">
+    {/* Wallet Balance (from Step 4) */}
+    {/* ... */}
+
+    {/* Wager Controls Section */}
+    <div>
+      <div className="text-sm text-muted-foreground uppercase text-center mb-3">
+        Current Wager
+      </div>
+      
+      {/* Wager Display with +/- Controls */}
+      <div className="flex items-center justify-center gap-4">
+        {/* Decrease Button */}
+        <button
+          onClick={decreaseWager}
+          disabled={disabled || wager <= minWager}
+          className="w-12 h-12 rounded-full bg-secondary hover:bg-secondary/80 
+                     disabled:opacity-50 disabled:cursor-not-allowed 
+                     font-bold text-xl transition-colors"
+          aria-label="Decrease wager"
+        >
+          -
+        </button>
+
+        {/* Current Wager Amount */}
+        <div className="min-w-[120px] text-center">
+          <div className="text-2xl font-bold text-foreground">
+            {formatCurrency(wager)}
+          </div>
+        </div>
+
+        {/* Increase Button */}
+        <button
+          onClick={increaseWager}
+          disabled={disabled || wager >= maxWager || wager >= wallet}
+          className="w-12 h-12 rounded-full bg-secondary hover:bg-secondary/80 
+                     disabled:opacity-50 disabled:cursor-not-allowed 
+                     font-bold text-xl transition-colors"
+          aria-label="Increase wager"
+        >
+          +
+        </button>
+      </div>
+
+      {/* Wager Range Info */}
+      <div className="text-xs text-muted-foreground text-center mt-2">
+        Range: {formatCurrency(minWager)} - {formatCurrency(maxWager)}
+      </div>
+    </div>
+  </div>
+);
+```
+
+**Tailwind Classes Breakdown:**
+- `flex items-center justify-center gap-4` - Horizontal layout with spacing
+- `w-12 h-12 rounded-full` - Circular buttons
+- `disabled:opacity-50` - Faded look when disabled
+- `transition-colors` - Smooth color changes on hover
+- `min-w-[120px]` - Fixed width for wager display (prevents layout shift)
+
+---
+
+**Step 6: Add Input Alternative (Optional Enhancement)**
+
+Some users might want to type the exact amount:
+
+```typescript
+const [isEditing, setIsEditing] = useState(false);
+const [inputValue, setInputValue] = useState(wager.toString());
+
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setInputValue(e.target.value);
+};
+
+const handleInputBlur = () => {
+  const newWager = parseInt(inputValue, 10);
+  if (!isNaN(newWager)) {
+    const clampedWager = Math.min(
+      Math.max(newWager, minWager),
+      maxWager,
+      wallet
+    );
+    onWagerChange(clampedWager);
+  }
+  setIsEditing(false);
+};
+
+// In your JSX, replace the wager display with:
+{isEditing ? (
+  <input
+    type="number"
+    value={inputValue}
+    onChange={handleInputChange}
+    onBlur={handleInputBlur}
+    className="w-[120px] text-center text-2xl font-bold bg-background 
+               border-2 border-border rounded px-2 py-1"
+    autoFocus
+  />
+) : (
+  <div 
+    onClick={() => !disabled && setIsEditing(true)}
+    className="cursor-pointer hover:bg-secondary/20 rounded px-2 py-1"
+  >
+    <div className="text-2xl font-bold text-foreground">
+      {formatCurrency(wager)}
+    </div>
+  </div>
+)}
+```
+
+---
+
+**Step 7: Integrate with Main Page**
+
+In `app/page.tsx`:
+
+```tsx
+import { WalletDisplay } from '@/components/wallet-display';
+
+export default function Home() {
+  const [wager, setWager] = useState(10);
+  const [wallet, setWallet] = useState(1000);
+  const [isSpinning, setIsSpinning] = useState(false);
+
+  return (
+    <div className="min-h-screen p-8">
+      <WalletDisplay
+        wallet={wallet}
+        wager={wager}
+        onWagerChange={setWager}
+        disabled={isSpinning}
+        minWager={10}
+        maxWager={100}
+      />
+    </div>
+  );
+}
+```
+
+---
+
+**Common Mistakes to Avoid:**
+
+❌ **Don't forget to clamp values:**
+```typescript
+const newWager = wager + 10;  // Could exceed wallet or maxWager!
+onWagerChange(newWager);
+```
+
+✅ **Always validate bounds:**
+```typescript
+const newWager = Math.min(wager + 10, maxWager, wallet);
+onWagerChange(newWager);
+```
+
+❌ **Don't forget currency formatting:**
+```typescript
+<div>{wallet}</div>  // Shows "1000" instead of "$1,000.00"
+```
+
+✅ **Format as currency:**
+```typescript
+<div>{formatCurrency(wallet)}</div>  // Shows "$1,000.00"
+```
+
+❌ **Don't forget disabled state:**
+```typescript
+<button onClick={increaseWager}>+</button>  // Works even when spinning!
+```
+
+✅ **Respect disabled prop:**
+```typescript
+<button onClick={increaseWager} disabled={disabled}>+</button>
+```
+
+---
+
+**Verification Checklist:**
+
+1. ✅ Does wallet balance display with proper currency formatting?
+2. ✅ Can you increase wager with + button?
+3. ✅ Can you decrease wager with - button?
+4. ✅ Are buttons disabled when wager is at min/max limits?
+5. ✅ Are buttons disabled when `disabled` prop is true?
+6. ✅ Does it show a warning when wallet is low?
+7. ✅ Does it prevent wagers higher than wallet balance?
+8. ✅ Is the layout responsive on mobile?
+
+---
+
+**Testing Your Component:**
+
+Create a simple test page to verify functionality:
+
+```tsx
+'use client';
+
+import { WalletDisplay } from '@/components/wallet-display';
+import { useState } from 'react';
+
+export default function Home() {
+  const [wallet, setWallet] = useState(1000);
+  const [wager, setWager] = useState(10);
+  const [isSpinning, setIsSpinning] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-8 p-8">
+      <WalletDisplay
+        wallet={wallet}
+        wager={wager}
+        onWagerChange={setWager}
+        disabled={isSpinning}
+      />
+      
+      {/* Test Controls */}
+      <div className="flex gap-2">
+        <button
+          onClick={() => setWallet(w => w - 100)}
+          className="px-4 py-2 bg-red-600 rounded text-white"
+        >
+          Lose $100
+        </button>
+        <button
+          onClick={() => setWallet(w => w + 100)}
+          className="px-4 py-2 bg-green-600 rounded text-white"
+        >
+          Win $100
+        </button>
+        <button
+          onClick={() => setIsSpinning(!isSpinning)}
+          className="px-4 py-2 bg-blue-600 rounded text-white"
+        >
+          Toggle Spinning
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+**Things to test:**
+- Increase wager to maximum
+- Decrease wager to minimum
+- Try to increase beyond wallet balance
+- Toggle spinning to see disabled state
+- Reduce wallet below 50 to see warning
+
+---
+
+**Next Steps:**
+
+After completing this task:
 1. Move on to Phase 4 (Integration & Polish)
-2. Combine all your components into the full game
+2. Combine all your components (ResultDisplay, Lever, StatsDisplay, WalletDisplay)
 3. Connect everything to game state and logic
 
 ---
@@ -2580,11 +2988,9 @@ import { ResultDisplay } from '@/components/result-display'; // Changed from Slo
 import { StatsDisplay } from '@/components/stats-display';
 import { StatsChart } from '@/components/stats-chart';
 import { Lever } from '@/components/lever'; // Import Lever component
+import { WalletDisplay } from '@/components/wallet-display'; // Import WalletDisplay component
 import { generateSpinResult, calculatePayout, canPlaceBet } from '@/lib/game-logic';
 import type { SpinResult } from '@/types/game';
-
-// Import CSS Modules for animations
-// import styles from '@/components/lever.module.css'; // This is now imported in the Lever component itself
 
 export default function Home() {
   // TODO: Your code goes here
@@ -2615,38 +3021,27 @@ export default function Home() {
 
 ---
 
-**Step 3: Implement Wager Controls**
+**Step 3: Understanding Wager Management**
+
+The WalletDisplay component you built in Task 3.4 handles all wager controls internally:
+- The `+` and `-` buttons to adjust wager
+- Validation to prevent invalid wagers
+- Disabling controls when spinning
+
+You just need to pass it the `updateWager` function from useGameState:
 
 ```typescript
-export default function Home() {
-  // ... state declarations ...
-  
-  // TODO: Handle wager increase
-  const handleIncreaseWager = () => {
-    const newWager = gameState.wager + 10;
-    // Don't let wager exceed wallet
-    if (newWager <= gameState.wallet) {
-      updateWager(newWager);
-    }
-  };
-  
-  // TODO: Handle wager decrease
-  const handleDecreaseWager = () => {
-    const newWager = gameState.wager - 10;
-    // Don't let wager go below 10 (or a minimum defined value)
-    if (newWager >= 10) {
-      updateWager(newWager);
-    }
-  };
-  
-  // TODO: Your render code goes here
-}
+<WalletDisplay
+  wallet={gameState.wallet}
+  wager={gameState.wager}
+  onWagerChange={updateWager}  // This connects to React Query
+  disabled={isSpinning}
+  minWager={10}
+  maxWager={100}
+/>
 ```
 
-**Questions to think about:**
-- What's the minimum wager amount? ($10?)
-- What's the maximum wager amount? (Your wallet balance?)
-- Should you be able to change wager while spinning? (No)
+**No additional wager handler functions needed!** The WalletDisplay component manages everything.
 
 ---
 
@@ -2736,39 +3131,15 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column: Wallet & Controls */}
           <div className="space-y-6">
-            {/* Wallet Display */}
-            <div className="bg-gray-800 rounded-lg p-6 border-2 border-yellow-500 shadow-md">
-              <div className="text-sm text-gray-400 mb-2 uppercase">Wallet Balance</div>
-              <div className="text-4xl font-bold text-yellow-500">
-                ${gameState.wallet.toLocaleString()}
-              </div>
-            </div>
-            
-            {/* Wager Controls */}
-            <div className="bg-gray-800 rounded-lg p-6 shadow-md">
-              <div className="text-sm text-gray-400 mb-4 uppercase">Current Wager</div>
-              <div className="flex items-center justify-between mb-4">
-                <button
-                  onClick={handleDecreaseWager}
-                  disabled={isSpinning || gameState.wager <= 10}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg text-2xl font-bold shadow-sm transform transition-transform active:scale-95"
-                >
-                  −
-                </button>
-                
-                <div className="text-3xl font-bold text-white">
-                  ${gameState.wager}
-                </div>
-                
-                <button
-                  onClick={handleIncreaseWager}
-                  disabled={isSpinning || gameState.wager >= gameState.wallet}
-                  className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg text-2xl font-bold shadow-sm transform transition-transform active:scale-95"
-                >
-                  +
-                </button>
-              </div>
-            </div>
+            {/* WalletDisplay Component - shows balance and wager controls */}
+            <WalletDisplay
+              wallet={gameState.wallet}
+              wager={gameState.wager}
+              onWagerChange={updateWager}
+              disabled={isSpinning}
+              minWager={10}
+              maxWager={100}
+            />
             
             {/* Lever Button */}
             <Lever 
@@ -2859,9 +3230,14 @@ export default function Home() {
 
 ---
 
-**Step 6: Add Wallet Display**
+**Step 6: Wallet Display Integration**
 
-(Already integrated into Step 5's main layout code.)
+The WalletDisplay component you built in Task 3.4 is now integrated in Step 5's layout. It handles:
+- Displaying wallet balance with currency formatting
+- Showing current wager amount
+- Providing +/- buttons to adjust wager
+- Validating wager limits (min, max, wallet balance)
+- Disabling controls during spin
 
 ---
 
