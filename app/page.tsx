@@ -1,29 +1,15 @@
 "use client"
 
-// TODO: Import your components here as you build them
 import { useState } from 'react'
-// import { WalletDisplay } from '@/components/wallet-display'
+import { useGameState } from '@/hooks/use-game-state'
 import { ResultDisplay } from '@/components/ResultDisplay'
-import { canPlaceBet, generateSpinResult } from '@/lib/game-logic'
-import type { SpinResult } from '@/types/game'
+import { StatsDisplay } from '@/components/StatsDisplay'
 import { Lever } from '@/components/Lever'
-// import { StatsDisplay } from '@/components/StatsDisplay'
-// import { WalletDisplay } from '@/components/WalletDisplay'
+import { WalletDisplay } from '@/components/WalletDisplay'
+import { canPlaceBet, generateSpinResult, calculatePayout } from '@/lib/game-logic'
+import type { SpinResult } from '@/types/game'
 
 export default function GamePage() {
-  const [result, setResult] = useState<SpinResult | null>(null);
-  const [isSpinning, setIsSpinning] = useState(false);
-
-  const handleSpin = () => {
-    setIsSpinning(true);
-
-    // Simulate spinning delay
-    setTimeout(() => {
-      const newResult = generateSpinResult();
-      setResult(newResult);
-      setIsSpinning(false);
-    }, 2000); // 2 second spin
-  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
@@ -44,7 +30,7 @@ export default function GamePage() {
 
         {/* TODO: Task 3.1 - Add ResultDisplay component here (shows single Noah or Dog result) */}
         <div className="mb-8">
-        <ResultDisplay result={result} isSpinning={isSpinning}/>
+        
         </div>
 
         {/* TODO: Task 3.2 - Add Lever component here */}
@@ -54,11 +40,7 @@ export default function GamePage() {
             disabled={false}
             isSpinning={false}
           /> */}
-      <Lever
-        onClick={handleSpin}
-        disabled={isSpinning}
-        isSpinning={isSpinning}
-      />
+      <button>lever goes here</button>
         </div>
 
         {/* TODO: Task 3.3 - Add StatsDisplay component here (only wins and losses, NO ties) */}
