@@ -10,6 +10,10 @@ import { canPlaceBet, generateSpinResult, calculatePayout } from '@/lib/game-log
 import type { SpinResult } from '@/types/game'
 
 export default function GamePage() {
+  const {gameState, placeBet, processSpin, updateWager, resetGame } = useGameState();
+  const [result, setResult] = useState<SpinResult | null>(null);
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [lastOutcome, setLastOutcome] = useState<'win' | 'loss' | null>(null);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
@@ -30,7 +34,7 @@ export default function GamePage() {
 
         {/* TODO: Task 3.1 - Add ResultDisplay component here (shows single Noah or Dog result) */}
         <div className="mb-8">
-        
+        Result display here
         </div>
 
         {/* TODO: Task 3.2 - Add Lever component here */}
