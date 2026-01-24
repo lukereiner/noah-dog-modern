@@ -22,7 +22,7 @@ export function generateSpinResult(): SpinResult {
  * @returns The amount to add/subtract from wallet (negative for loss)
  */
 export function calculatePayout(wager: number, outcome: "win" | "loss" ): number {
-  if (outcome = 'win') {
+  if (outcome === 'win') {
     return wager;
   } else {
     return -wager;
@@ -51,9 +51,9 @@ export function canPlaceBet(wallet: number, wager: number): boolean {
  * @param change - Amount to add (positive) or subtract (negative)
  * @returns New wallet amount
  */
-export function updateWallet(current: number, change: number): number {
+/* export function updateWallet(current: number, change: number): number {
   const newBalance = current + change;
 
   return Math.max(0, newBalance);
-}
+} */
 

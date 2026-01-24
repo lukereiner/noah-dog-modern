@@ -17,9 +17,9 @@ const randomWordList = [
     `Does he really tho?`,
     `Doubt he's even about it`,
     `He barks like a poodle 🐩`,
-    `His knee wasn't even injured 🏀`,
+    `His knee wasn't injured..`,
     `Only did 1 week of Titus 10`,
-    `Lives by the Irish goodbye...`,
+    `Lives by the Irish goodbye`,
     `Drives under 200 yards 🏌🏻`,
     `Dude, he 3 putts ⛳`,
 ]
@@ -40,7 +40,7 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
     return (
         <div className='flex flex-col items-center gap-4'>
             <div className={
-                `relative w-64 h-64 rounded-lg overflow-hidden border-4
+                `relative w-40 h-40 rounded-lg overflow-hidden border-4
                 ${isSpinning ? styles.spinning : ''}
                 ${displayOutcome === 'win' ? 'border-green-500' : ''}
                 ${displayOutcome === 'loss' ? 'border-red-500' : 'border-gray-700'}`
@@ -51,8 +51,8 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
                 className='object-fill'/>
             </div>
             {isSpinning && (
-                <div className='flex items-cetner jsutify-center'>
-                    <p className='text-white text-2xl font-bold animate-pule'>
+                <div className='flex items-cetner justify-center'>
+                    <p className='text-white text-xl font-bold animate-pule'>
                         {randomWordList[randomWordIndex]}
                     </p>
                 </div>
@@ -61,7 +61,7 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
 
         {!isSpinning && result && (
             <div className={
-                `text-2xl font-bold
+                `text-xl font-bold
                 ${result?.outcome === 'win' ? 'text-green-500' : 'text-red-500'}`
             }>
             {result?.outcome === 'win' ? '🐕‍🦺 GOT THAT DOG! 🦴': '🧸 Just Noah... 🎀'}

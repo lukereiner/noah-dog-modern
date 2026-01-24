@@ -4,7 +4,7 @@ const STORAGE_KEY = 'noahDogGameState';
 
 export const DEFAULT_GAME_STATE: GameState = {
     wallet: 1000,
-    wager: 50,
+    wager: 100,
     wins: 0,
     losses: 0,
 };
@@ -45,5 +45,6 @@ export function saveGameState(state: GameState): void {
 export function clearGameState(): void {
     if (typeof window !== 'undefined') {
         localStorage.removeItem(STORAGE_KEY);
+        window.location.reload();
     }
 }

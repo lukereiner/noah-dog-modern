@@ -64,7 +64,7 @@ export function WalletDisplay({
                 <button
                 onClick={decreaseWager}
                 disabled={disabled || wager <= minWager}
-                className="w-12 h-12 rounded-full bg-secondary hover:bg-secondary/80 
+                className="w-12 h-12 rounded-full bg-primary hover:bg-secondary/80 
                      disabled:opacity-50 disabled:cursor-not-allowed 
                      font-bold text-xl transition-colors"
                 aria-label="Decrease wager">
@@ -78,7 +78,7 @@ export function WalletDisplay({
                 <button
                 onClick={increaseWager}
                 disabled={disabled || wager == maxWager || wager >= wallet}
-                className="w-12 h-12 rounded-full bg-secondary hover:bg-secondary/80 
+                className="w-12 h-12 rounded-full bg-primary hover:bg-secondary/80 
                      disabled:opacity-50 disabled:cursor-not-allowed 
                      font-bold text-xl transition-colors"
           aria-label="Increase wager">

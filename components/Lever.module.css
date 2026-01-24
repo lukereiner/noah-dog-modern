@@ -19,8 +19,8 @@
 
 /* Made ball smaller - 50px instead of 80px */
 .leverBall {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   background: radial-gradient(circle at 30% 30%, oklch(0.769 0.188 70.08), oklch(0.646 0.222 41.116));
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(0, 0, 0, 0.2), inset 4px 4px 8px
@@ -45,8 +45,8 @@
 
 /* Made shaft smaller and fixed - 40px width, 150px height */
 .leverShaft {
-  width: 40px;
-  height: 150px;
+  width: 20px;
+  height: 75px;
   background: linear-gradient(to right, oklch(0.269 0 0), oklch(0.439 0 0), oklch(0.269 0 0));
   border-radius: 20px;
   position: relative;
@@ -58,11 +58,11 @@
 /* Track/slot in the middle of the shaft */
 .leverTrack {
   position: absolute;
-  top: 15px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 26px;
-  height: 120px;
+  width: 20px;
+  height: 80px;
   background: linear-gradient(to right, oklch(0.708 0 0), oklch(0.556 0 0), oklch(0.708 0 0));
   border-radius: 13px;
   box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 -4px 8px rgba(255, 255, 255, 0.1);
