@@ -10,7 +10,7 @@ interface LeverProps {
 
 export function Lever({ onClick, disabled = false, isSpinning = false }: LeverProps) {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center text-center">
       <button
         onClick={onClick}
         disabled={disabled}
@@ -28,7 +28,7 @@ export function Lever({ onClick, disabled = false, isSpinning = false }: LeverPr
       </button>
 
       {/* Text below the lever */}
-      <span className="mt-4 text-sm font-semibold text-muted-foreground">
+      <span className="mt-4 text-sm font-semibold text-muted-foreground truncate">
         {isSpinning ? "SPINNING..." : "PULL LEVER"}
       </span>
     </div>

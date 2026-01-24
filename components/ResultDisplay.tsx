@@ -40,7 +40,7 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
     return (
         <div className='flex flex-col items-center gap-4'>
             <div className={
-                `relative w-40 h-40 rounded-lg overflow-hidden border-4
+                `relative w-48 h-48 rounded-lg overflow-hidden border-4
                 ${isSpinning ? styles.spinning : ''}
                 ${displayOutcome === 'win' ? 'border-green-500' : ''}
                 ${displayOutcome === 'loss' ? 'border-red-500' : 'border-gray-700'}`

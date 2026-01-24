@@ -21,6 +21,8 @@ export function WalletDisplay({
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     }).format(amount);
   };
 
@@ -35,61 +37,61 @@ export function WalletDisplay({
   };
 
   return (
-    <div className="bg-card rounded-lg border-2 border-border p-6 space-y-4">
-      {/* Wallet Balance Section */}
-      <div className="text-center">
-        <div className="text-sm text-muted-foreground uppercase mb-2">
-          Wallet Balance
+    <div className="bg-gray-800 rounded-lg border-2 border-gray-700 p-2 space-y-2 w-[225px]">
+      <div id="balance-wager-wrapper" className="grid grid-cols-2 gap-4">
+        {/* Wallet Balance and Wager */}
+        <div className="col-span-2 flex justify-evenly items-center">
+          <div className="text-center">
+            <div className="text-sm text-gray-400 uppercase">
+              Balance
+            </div>
+            <div
+              className={`text-2xl font-bold ${
+                wallet < 100 ? "text-red-500" : "text-white"
+              }`}
+            >
+              {formatCurrency(wallet)}
+            </div>
+            {wallet < 100 && (
+              <div className="text-xs text-red-500 mt-1">⚠️ Low balance!</div>
+            )}
+          </div>
+          <div className="text-center">
+            <div className="text-sm text-gray-400 uppercase">Wager</div>
+            <div className="text-2xl font-bold text-white">
+              {formatCurrency(wager)}
+            </div>
+          </div>
         </div>
-        <div
-          className={`text-3xl font-bold ${
-            wallet < 50 ? "text-red-500" : "text-foreground"
-          }`}
-        >
-          {formatCurrency(wallet)}
-        </div>
-        {wallet < 50 && (
-            <div className="text-xs text-red-500 mt-1">⚠️ Low balance!</div>
-        )}
-      </div>
 
-      {/* Divider */}
-      <div className="border-t border-border">
-        {/* Wager controls go here */}
-        <div>
-            <div className="text-sm text-muted-foreground uppercase text-center mb-3">Current Wager</div>
-            {/* Wager controls */}
-            <div className="flex items-center justify-center gap-4">
-                {/* Decrease button */}
-                <button
-                onClick={decreaseWager}
-                disabled={disabled || wager <= minWager}
-                className="w-12 h-12 rounded-full bg-primary hover:bg-secondary/80 
-                     disabled:opacity-50 disabled:cursor-not-allowed 
-                     font-bold text-xl transition-colors"
-                aria-label="Decrease wager">
-                    -
-                </button>
-                {/* Current wager amount */}
-                <div className="min-w-[120px] text-center">
-                    <div className="text-2xl font-bold text-foreground">{formatCurrency(wager)}</div>
-                </div>
-                {/* Increase button */}
-                <button
-                onClick={increaseWager}
-                disabled={disabled || wager == maxWager || wager >= wallet}
-                className="w-12 h-12 rounded-full bg-primary hover:bg-secondary/80 
-                     disabled:opacity-50 disabled:cursor-not-allowed 
-                     font-bold text-xl transition-colors"
-          aria-label="Increase wager">
-                    +
-                </button>
-            </div>
-            {/* Wager range info */}
-            <div className="text-xs text-muted-foreground text-center mt-2">
-                Range: {formatCurrency(minWager)} - {formatCurrency(maxWager)}
-            </div>
+        {/* Wager Controls */}
+        <div className="col-span-2 flex justify-center items-center gap-12 mt-2">
+          <button
+            onClick={decreaseWager}
+            disabled={disabled || wager <= minWager}
+            className="w-12 h-12 rounded-full bg-gray-700 hover:bg-gray-600
+disabled:opacity-30 disabled:cursor-not-allowed
+font-bold text-xl transition-colors text-white"
+            aria-label="Decrease wager"
+          >
+            -
+          </button>
+          <button
+            onClick={increaseWager}
+            disabled={disabled || wager == maxWager || wager >= wallet}
+            className="w-12 h-12 rounded-full bg-gray-700 hover:bg-gray-600
+disabled:opacity-30 disabled:cursor-not-allowed
+font-bold text-xl transition-colors text-white"
+            aria-label="Increase wager"
+          >
+            +
+          </button>
         </div>
+
+        {/* Wager Range Info */}
+{/*         <div className="col-span-2 text-xs text-muted-foreground text-center mt-2">
+          Range: {formatCurrency(minWager)} - {formatCurrency(maxWager)}
+        </div> */}
       </div>
     </div>
   );

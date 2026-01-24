@@ -60,31 +60,32 @@ export default function GamePage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-lg mx-auto">
         <header className="py-2 px-4 text-center border-b border-gray-700">
-          <h1 className="text-3xl md:text-5xl font-bold mb-2">
+          <h1 className="text-3xl md:text-5xl font-bold mb-1">
             Does Noah got that DOG in 'em? 🦴
           </h1>
         </header>
         {/* Main game area */}
         <main className="container mx-auto px-4 py-4 max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {/* Stats Section */}
-            <div className="mt-0 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="mt-0 grid grid-cols-1 gap-8">
               <div>
                 <StatsDisplay wins={gameState.wins} losses={gameState.losses} />
               </div>
             </div>
 
             {/* Middle Column: result display */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="bg-gray-800 rounded-lg p-8 shadow-md flex items-center justify-center">
+            <div className="space-y-6">
+              <div className="bg-gray-800 rounded-lg p-4 shadow-md flex items-center justify-center">
                 <ResultDisplay result={result} isSpinning={isSpinning} />
               </div>
             </div>
 
-            <div id="wallet-lever-wrapper" className="flex">
-              <div className="dpace-y-6">
+            <div id="wallet-lever-wrapper" className="flex justify-center">
+              <div id="wallet-lever-wrapper-split" className="flex text-center gap-6">
+                <div className="dpace-y-6">
                 {/* WalletDisplay component - shows balance and wager controls */}
                 <WalletDisplay
                   wallet={gameState.wallet}
@@ -103,6 +104,7 @@ export default function GamePage() {
                 }
                 isSpinning={isSpinning}
               />
+              </div>
             </div>
 
             {/* Reset Button */}
@@ -115,7 +117,7 @@ export default function GamePage() {
                 }
               }}
               disabled={isSpinning}
-              className="w-full py-3 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:cursor-not-allowed rounded-lg font-semibold shadow-sm"
+              className="w-full py-3 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:cursor-not-allowed rounded-lg font-semibold shadow-sm pt-4 mt-10"
             >
               Reset Game
             </button>
@@ -123,7 +125,7 @@ export default function GamePage() {
         </main>
 
         {/* Footer */}
-        <footer>
+        <footer className="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-3 text-center h-12">
           <p>&copy; {new Date().getFullYear()} Noah Dog. All rights reserved</p>
         </footer>
       </div>
