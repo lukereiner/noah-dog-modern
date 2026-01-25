@@ -33,7 +33,7 @@ export function useGameState() {
         },
     });
 
-    const placeBetMutation = useMutation({
+    /* const placeBetMutation = useMutation({
         mutationFn: ({ wager }: { wager: number }) => {
             const current = queryClient.getQueryData<GameState>(QUERY_KEY) || DEFAULT_GAME_STATE;
 
@@ -48,7 +48,7 @@ export function useGameState() {
         onSuccess: (newState) => {
             queryClient.setQueryData(QUERY_KEY, newState);
         },
-    });
+    }); */
 
     const processSpinMutation = useMutation({
         mutationFn: ({ outcome, payout }: { outcome: 'win' | 'loss'; payout: number }) => {
@@ -91,7 +91,7 @@ export function useGameState() {
         isLoading,
         updateGameState: updateStateMutation.mutate,
         resetGame: resetGameMutation.mutate,
-        placeBet: placeBetMutation.mutate,
+        //placeBet: placeBetMutation.mutate,
         processSpin: processSpinMutation.mutate,
         updateWager: updateWagerMutation.mutate,
     };
