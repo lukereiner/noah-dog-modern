@@ -47,14 +47,14 @@ export function WalletDisplay({
             </div>
             <div
               className={`text-2xl font-bold ${
-                wallet < 100 ? "text-red-500" : "text-white"
+                wallet <= 200 ? "text-red-500" : "text-white"
               }`}
             >
               {formatCurrency(wallet)}
             </div>
-            {wallet < 100 && (
+{/*             {wallet <= 200 && (
               <div className="text-xs text-red-500 mt-1">⚠️ Low balance!</div>
-            )}
+            )} */}
           </div>
           <div className="text-center">
             <div className="text-sm text-gray-400 uppercase">Wager</div>
