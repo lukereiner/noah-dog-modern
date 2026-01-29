@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import type { SpinResult } from "@/types/game";
 import styles from './ResultDisplay.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ResultDisplayProps {
     result: SpinResult | null;
@@ -19,7 +19,7 @@ const randomWordList = [
     `He barks like a poodle 🐩`,
     `His knee wasn't injured..`,
     `Only did 1 week of Titus 10`,
-    `Lives by the Irish goodbye`,
+    `Loves the Irish goodbye`,
     `Drives under 200 yards 🏌🏻`,
     `Dude, he 3 putts ⛳`,
     `He drives a post-90s 4R 🚙`,
@@ -28,9 +28,9 @@ const randomWordList = [
 ]
 
 export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
-    const randNum = Math.floor(Math.random() * 12 ) + 1;
-    const displayImage = result?.image || `/noah/noah-${randNum}.jpg`;
+    const displayImage = result?.image || `/noah/noah-9.jpg`;
     const displayOutcome = result?.outcome;
+    const [randomWordIndex, setRandomWordIndex] = useState(0)
 
     useEffect(() => {
         if (result?.outcome === 'win') {
@@ -39,7 +39,11 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
         }
     }, [result])
 
-    const randomWordIndex = Math.floor(Math.random() * randomWordList.length)
+    useEffect(() => {
+        if (isSpinning) {
+            setRandomWordIndex(Math.floor(Math.random() * randomWordList.length));
+        }
+    }, [isSpinning])
 
     return (
         <div className='flex flex-col items-center gap-4'>
@@ -56,7 +60,7 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
             </div>
             {isSpinning && (
                 <div className='flex items-cetner justify-center'>
-                    <p className='text-white text-xl font-bold animate-pule'>
+                    <p className='text-white text-xl font-bold animate-pulse'>
                         {randomWordList[randomWordIndex]}
                     </p>
                 </div>
