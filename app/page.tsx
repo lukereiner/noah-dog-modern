@@ -62,8 +62,8 @@ export default function GamePage() {
     <>
     <div className="min-h-screen bg-gray-900 text-white p-4">
       <div className="max-w-lg mx-auto">
-        <header className="py-2 px-4 text-center border-b border-gray-700">
-          <h1 className="text-3xl md:text-5xl font-bold mb-1">
+        <header className="py-0 px-4 text-center border-b border-gray-700">
+          <h1 className="text-3xl md:text-5xl font-bold mb-2">
             Does Noah got that DOG in 'em? 🦴
           </h1>
         </header>
