@@ -1,7 +1,7 @@
 // Quick manual testing script for game logic functions
 // Run this with: npx tsx lib/test-game-logic.ts
 
-import { generateSpinResult, calculatePayout, canPlaceBet, updateWallet } from "./game-logic"
+import { generateSpinResult, calculatePayout, canPlaceBet } from "./game-logic"
 
 console.log("=== Testing generateSpinResult ===\n")
 
@@ -68,5 +68,3 @@ console.log('Payout for $50 wage:', payout);
 // Test 5: Can I bet $50 with $100 wallet?
 console.log('Can bet $50 with $100 wallet?', canPlaceBet(100,50));
 console.log('Can bet $150 with $100 wallet?', canPlaceBet(100,150));
-  console.log('Update $100 wallet with +$50:', updateWallet(100, 50));
-  console.log('Update $20 wallet with -$50:', updateWallet(20, -50));
