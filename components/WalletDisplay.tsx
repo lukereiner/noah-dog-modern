@@ -37,7 +37,7 @@ export function WalletDisplay({
   };
 
   return (
-    <div className="bg-gray-800 rounded-lg border-2 border-gray-700 p-2 space-y-2 w-[225px]">
+    <div className="w-full bg-gray-800 rounded-lg border-2 border-gray-700 p-2 space-y-2">
       <div id="balance-wager-wrapper" className="grid grid-cols-2 gap-4">
         {/* Wallet Balance and Wager */}
         <div className="col-span-2 flex justify-evenly items-center">

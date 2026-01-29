@@ -59,6 +59,7 @@ export default function GamePage() {
   };
 
   return (
+    <>
     <div className="min-h-screen bg-gray-900 text-white p-4">
       <div className="max-w-lg mx-auto">
         <header className="py-2 px-4 text-center border-b border-gray-700">
@@ -83,19 +84,18 @@ export default function GamePage() {
               </div>
             </div>
 
-            <div id="wallet-lever-wrapper" className="flex justify-center">
-              <div id="wallet-lever-wrapper-split" className="flex text-center gap-6">
-                <div className="dpace-y-6">
-                {/* WalletDisplay component - shows balance and wager controls */}
-                <WalletDisplay
-                  wallet={gameState.wallet}
-                  wager={gameState.wager}
-                  onWagerChange={updateWager}
-                  disabled={isSpinning}
-                  minWager={100}
-                  maxWager={1000}
-                />
-              </div>
+            {/* Wallet and Lever Row */}
+            <div className="flex items-center gap-4">
+              {/* WalletDisplay component - shows balance and wager controls */}
+              <WalletDisplay
+                wallet={gameState.wallet}
+                wager={gameState.wager}
+                onWagerChange={updateWager}
+                disabled={isSpinning}
+                minWager={100}
+                maxWager={1000}
+              />
+              
               {/* Lever Button */}
               <Lever
                 onClick={handleLeverPull}
@@ -104,7 +104,6 @@ export default function GamePage() {
                 }
                 isSpinning={isSpinning}
               />
-              </div>
             </div>
 
             {/* Reset Button */}
@@ -125,10 +124,12 @@ export default function GamePage() {
         </main>
 
         {/* Footer */}
-        <footer className="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-3 text-center h-12">
-          <p>&copy; {new Date().getFullYear()} Noah Dog. All rights reserved</p>
-        </footer>
+
       </div>
     </div>
+            <footer className="bg-gray-800 text-white p-3 text-center">
+          <p>&copy; {new Date().getFullYear()} Noah Dog. All rights reserved.</p>
+        </footer>
+    </>
   );
 }

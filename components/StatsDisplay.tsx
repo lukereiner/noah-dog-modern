@@ -11,7 +11,7 @@ export function StatsDisplay({ wins, losses }: StatsDisplayProps) {
     totalGames > 0 ? ((wins / totalGames) * 100).toFixed(1) : "0.0";
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-2">
+    <div className="w-full max-w-2xl mx-auto px-0">
       <div className="grid grid-cols-3 gap-2 items-center bg-gray-800 border border-gray-600 rounded-lg p-2">
         {/* Wins */}
         <div className="text-center">
