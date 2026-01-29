@@ -64,7 +64,7 @@ export default function GamePage() {
       <div className="max-w-lg mx-auto">
         <header className="py-0 px-4 text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-0">
-            Does Noah got that DOG in 'em? 🦴
+            Does Noah got that DAWG in 'em? 🦴
           </h1>
         </header>
         {/* Main game area */}
@@ -128,7 +128,7 @@ export default function GamePage() {
       </div>
     </div>
             <footer className="bg-gray-800 text-white p-3 text-center">
-          <p>&copy; {new Date().getFullYear()} Noah Dog. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Noah Dawg. All rights reserved.</p>
         </footer>
     </>
   );

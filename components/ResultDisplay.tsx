@@ -72,7 +72,7 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
                 `text-xl font-bold
                 ${result?.outcome === 'win' ? 'text-green-500' : 'text-red-500'}`
             }>
-            {result?.outcome === 'win' ? '🐕‍🦺 GOT THAT DOG! 🦴': '🧸 Just Noah... 🎀'}
+            {result?.outcome === 'win' ? '🐕‍🦺 GOT THAT DAWG! 🦴': '🧸 Just Noah... 🎀'}
             </div>
         )}
 

@@ -25,7 +25,7 @@ export function StatsDisplay({ wins, losses }: StatsDisplayProps) {
         </div>
         {/* Win Rate */}
         <div className="text-center">
-          <div className="text-md text-gray-400">Win Rate</div>
+          <div className="text-md text-gray-400">WIN RATE</div>
           <div className="text-xl font-bold text-white">{winRate}%</div>
 {/*           <div className="text-gray-500 text-xs">
             {totalGames} {totalGames === 1 ? "game" : "games"} played
