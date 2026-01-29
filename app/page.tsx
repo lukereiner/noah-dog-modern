@@ -62,13 +62,13 @@ export default function GamePage() {
     <>
     <div className="min-h-screen bg-gray-900 text-white p-4">
       <div className="max-w-lg mx-auto">
-        <header className="py-0 px-4 text-center border-b border-gray-700">
-          <h1 className="text-3xl md:text-5xl font-bold mb-2">
+        <header className="py-0 px-4 text-center">
+          <h1 className="text-3xl md:text-5xl font-bold mb-0">
             Does Noah got that DOG in 'em? 🦴
           </h1>
         </header>
         {/* Main game area */}
-        <main className="container mx-auto px-4 py-4 max-w-6xl">
+        <main className="container mx-auto px-4 py-2 max-w-6xl">
           <div className="grid grid-cols-1 gap-4">
             {/* Stats Section */}
             <div className="mt-0 grid grid-cols-1 gap-8">
@@ -116,7 +116,7 @@ export default function GamePage() {
                 }
               }}
               disabled={isSpinning}
-              className="w-full py-3 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:cursor-not-allowed rounded-lg font-semibold shadow-sm pt-4 mt-10"
+              className="w-full py-3 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:cursor-not-allowed rounded-lg font-semibold shadow-sm pt-4 mt-4"
             >
               Reset Game
             </button>
