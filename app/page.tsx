@@ -93,7 +93,7 @@ export default function GamePage() {
                 onWagerChange={updateWager}
                 disabled={isSpinning}
                 minWager={100}
-                maxWager={1000}
+                maxWager={gameState.wallet}
               />
               
               {/* Lever Button */}
