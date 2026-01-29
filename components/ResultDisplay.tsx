@@ -22,10 +22,14 @@ const randomWordList = [
     `Lives by the Irish goodbye`,
     `Drives under 200 yards 🏌🏻`,
     `Dude, he 3 putts ⛳`,
+    `He drives a post-90s 4R 🚙`,
+    `Shoots 72 at par 3 👏🏻`,
+    `Plays 🎾 w/ untied shoes`,
 ]
 
 export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
-    const displayImage = result?.image || '/noah/noah-1.jpg';
+    const randNum = Math.floor(Math.random() * 12 ) + 1;
+    const displayImage = result?.image || `/noah/noah-${randNum}.jpg`;
     const displayOutcome = result?.outcome;
 
     useEffect(() => {
@@ -67,6 +71,10 @@ export function ResultDisplay({ result, isSpinning }: ResultDisplayProps) {
             {result?.outcome === 'win' ? '🐕‍🦺 GOT THAT DOG! 🦴': '🧸 Just Noah... 🎀'}
             </div>
         )}
+
+        <div role='status' aria-live='polite' className='sr-only'>
+            {result?.outcome === 'win' ? 'GOT THAT DOG!' : 'Just Noah...'}
+            </div>
         </div>
     )
 }
