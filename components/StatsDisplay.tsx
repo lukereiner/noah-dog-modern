@@ -12,24 +12,24 @@ export function StatsDisplay({ wins, losses }: StatsDisplayProps) {
 
   return (
     <div className="w-full max-w-2xl mx-auto px-0">
-      <div className="grid grid-cols-3 gap-2 items-center bg-gray-800 border border-gray-600 rounded-lg px-2">
+      <div className="grid grid-cols-3 gap-2 items-center bg-gray-800 border border-gray-600 rounded-lg p-2">
         {/* Wins */}
         <div className="text-center">
-          <div className="text-md text-gray-400 uppercase mb-1">Wins</div>
+          <div className="text-md text-gray-400 uppercase mb-0">Wins</div>
           <div className="text-xl font-bold text-green-500">{wins}</div>
         </div>
         {/* Losses */}
         <div className="text-center">
-          <div className="text-md text-gray-400 uppercase mb-1">Losses</div>
+          <div className="text-md text-gray-400 uppercase mb-0">Losses</div>
           <div className="text-xl font-bold text-red-500">{losses}</div>
         </div>
         {/* Win Rate */}
         <div className="text-center">
           <div className="text-md text-gray-400">Win Rate</div>
           <div className="text-xl font-bold text-white">{winRate}%</div>
-          <div className="text-gray-500 text-xs">
+{/*           <div className="text-gray-500 text-xs">
             {totalGames} {totalGames === 1 ? "game" : "games"} played
-          </div>
+          </div> */}
         </div>
       </div>
       {/* Progress bar across all columns */}
